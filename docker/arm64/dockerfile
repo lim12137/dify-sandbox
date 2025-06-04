@@ -1,23 +1,21 @@
-FROM docker.io/openeuler/openeuler:22.03-lts
+FROM python:3.10-slim-bookworm
 
 # if you located in China, you can use aliyun mirror to speed up
 # && echo "deb http://mirrors.aliyun.com/debian testing main" > /etc/apt/sources.list
 RUN echo "deb http://deb.debian.org/debian testing main" > /etc/apt/sources.list \
-    && dnf update -y && \
-    dnf install -y \
-       python3.10 \
-       python3.10-pip \
-       pkgconfig \
-       libseccomp-devel \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends \
+       pkg-config \
+       libseccomp-dev \
        wget \
        curl \
-       xz \
-       zlib \
+       xz-utils \
+       zlib1g \
        expat \
        perl \
-       sqlite-libs \
-    && dnf clean all \
-    && rm -rf /var/cache/dnf
+       libsqlite3-0 \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
 # copy main binary to /main
 COPY main /main
