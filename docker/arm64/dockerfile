@@ -2,7 +2,8 @@ FROM docker.io/openeuler/openeuler:22.03-lts
 
 # if you located in China, you can use aliyun mirror to speed up
 # && echo "deb http://mirrors.aliyun.com/debian testing main" > /etc/apt/sources.list
-RUN dnf update -y && \
+RUN echo "deb http://deb.debian.org/debian testing main" > /etc/apt/sources.list \
+    && dnf update -y && \
     dnf install -y \
        python3.10 \
        python3.10-pip \
