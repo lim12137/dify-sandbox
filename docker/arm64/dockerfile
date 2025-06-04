@@ -1,4 +1,4 @@
-FROM swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/openeuler/openeuler:22.03-lts-linuxarm64
+FROM docker.io/openeuler/openeuler:22.03-lts
 
 # if you located in China, you can use aliyun mirror to speed up
 # && echo "deb http://mirrors.aliyun.com/debian testing main" > /etc/apt/sources.list
